@@ -64,7 +64,11 @@ def query(body: QueryRequest, request: Request):
             include = ['documents', 'metadatas'] 
         )
         docs = results['documents'][0]
-        context = '\n\n'.join(docs)
+        metas = results['metadatas'][0]
+        context = "\n\n".join([
+                  f"Title: {doc}\nAuthors: {meta['authors']}\nYear: {meta['year']}\nCluster: {meta['cluster_name']}"
+            for doc, meta in zip(docs, metas)
+        ])
         chain = PROMPT | llm
         response = chain.invoke({
             'context' : context,
@@ -72,7 +76,8 @@ def query(body: QueryRequest, request: Request):
         })
         return {
             'answer' : response.content,
-            'sources' : results['metadatas'][0]
+            'sources' : results['metadatas'][0], 
+            'titles' : results['documents'][0]
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
