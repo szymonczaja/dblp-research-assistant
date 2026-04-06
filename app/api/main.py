@@ -51,6 +51,7 @@ class QueryRequest(BaseModel):
     class Config:
         extra = 'ignore'
 
+
 @app.post('/query')
 def query(body: QueryRequest, request: Request):
     model = request.app.state.model

@@ -12,7 +12,6 @@ for msg in st.session_state.messages:
         st.write(msg["content"])
 
 if question := st.chat_input("Ask about research papers..."):
-    
     st.session_state.messages.append({"role": "user", "content": question})
     with st.chat_message("user"):
         st.write(question)
