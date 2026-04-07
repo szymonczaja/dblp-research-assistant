@@ -71,3 +71,16 @@ curl -X POST http://localhost:8000/query \
 | API | `FastAPI` + `uvicorn` |
 | UI | `Streamlit` |
 | Deployment | `Docker` |
+
+
+## Results & Insights
+
+### Topic Map (UMAP 2D)
+
+20 thematic clusters identified across 200k CS publications.
+LLMs & Foundation Models and AI & Knowledge Systems show the strongest
+growth trend (2018–2025).
+
+### Topic Evolution (2018–2025)
+
+### Chat Interface
